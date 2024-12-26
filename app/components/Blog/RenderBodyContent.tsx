@@ -1,37 +1,39 @@
 import config from "@/sanity/config/client-config";
 import { Blog } from "@/sanity/types/blog";
-
 import { PortableText } from "@portabletext/react";
 import { getImageDimensions } from "@sanity/asset-utils";
 import urlBuilder from "@sanity/image-url";
-import Image from "next/image";
 
-// lazy-loaded image component
+
 const ImageComponent = ({ value, isInline }: any) => {
+  if (!value) return null;
+
   const { width, height } = getImageDimensions(value);
+  const imageUrl = urlBuilder(config)
+    .image(value)
+    .fit("max")
+    .auto("format")
+    .url();
+
+  if (!imageUrl) return <p>Image could not be loaded</p>;
+
   return (
     <div className="my-10 overflow-hidden rounded-[15px]">
-      <Image
-        src={
-          urlBuilder(config)
-            .image(value)
-            .fit("max")
-            .auto("format")
-            .url() as string
-        }
-        width={width}
-        height={height}
-        alt={value.alt || "blog image"}
-        loading="lazy"
-        style={{
-          display: isInline ? "inline-block" : "block",
-          aspectRatio: width / height,
-        }}
-      />
-    </div>
-  );
-};
-
+    <img
+      src={imageUrl as string}
+      width={width || 600}
+      height={height || 400}
+      alt={(value.alt as string) || "blog image"}
+      loading="lazy"
+      
+      style={{
+        display: isInline ? "inline-block" : "block",
+        aspectRatio: width / height,
+      }}
+    />
+  </div>
+);
+}
 const components = {
   types: {
     image: ImageComponent,
