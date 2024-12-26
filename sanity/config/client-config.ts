@@ -1,13 +1,12 @@
 import { ClientPerspective } from "next-sanity";
-import { apiVersion,  } from "../env";
 
-export const config ={
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ||"",
- 
-    dataset:"production",
-    apiVersion,
-    useCdn:false,
-    token: process.env.SANITY_API_KEY,
-    perspective: 'published' as ClientPerspective
+const config = {
+	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string,
+	dataset: "production",
+	apiVersion: "2023-03-09",
+	useCdn: false,
+	token: process.env.SANITY_API_KEY as string,
+	perspective: 'published' as ClientPerspective,
+};
 
-}
+export default config;

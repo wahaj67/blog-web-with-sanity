@@ -1,5 +1,6 @@
-import {config} from "@/sanity/config/client-config";
+import config from "@/sanity/config/client-config";
 import { Blog } from "@/sanity/types/blog";
+
 import { PortableText } from "@portabletext/react";
 import { getImageDimensions } from "@sanity/asset-utils";
 import urlBuilder from "@sanity/image-url";

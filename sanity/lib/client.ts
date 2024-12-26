@@ -1,14 +1,10 @@
 import { createClient } from 'next-sanity'
 
-import { apiVersion,  projectId } from '../env'
+import { apiVersion, dataset, projectId } from '../env'
 
- const Client = createClient({
+export const client = createClient({
   projectId,
-  dataset:"production",
+  dataset,
   apiVersion,
-  useCdn: false,
-  token: process.env.SANITY_API_KEY,
-  perspective:"published" ,
-
+  useCdn: true, // Set to false if statically generating pages, using ISR or tag-based revalidation
 })
-export default Client;
