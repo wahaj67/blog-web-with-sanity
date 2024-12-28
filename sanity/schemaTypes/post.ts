@@ -66,7 +66,7 @@ const post = {
 			name: "author",
 			title: "Author",
 			type: "reference",
-			to: { type: "author" },
+			to: [{ type: "author" }],
 			validation: (Rule: any) => Rule.required(),
 		},
 		{

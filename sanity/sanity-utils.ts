@@ -24,7 +24,7 @@ export async function sanityFetch<QueryResponse>({
     (query,
     qParams,
     {
-      cache: "force-cache",
+      cache: "no-cache",
       next: { tags },
     })
   );
