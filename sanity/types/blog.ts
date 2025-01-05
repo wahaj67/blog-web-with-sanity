@@ -22,3 +22,13 @@ export type Blog = {
   tags: string[],
   publishedAt: string,
 };
+
+export type Comments = {
+  _id: number,
+  name: string,
+  email: string,
+  comment: string,
+  postSlug: string,
+  _createdAt: string,
+  message:string
+};

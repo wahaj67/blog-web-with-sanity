@@ -1,5 +1,6 @@
-
+import { urlFor } from "@/sanity/lib/image";
 import { Blog } from "@/sanity/types/blog";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -7,8 +8,18 @@ const BlogItem = ({ blog }: { blog: Blog }) => {
   return (
     <Link
       href={`/blog/${blog?.slug?.current}`}
-      className="block p-5 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 my-8  max-w-[1000px] mx-auto"
+      className="block p-5 bg-gray-300 rounded-lg border border-gray-600 shadow-md hover:bg-gray-100 my-8 max-w-[1000px] mx-auto"
     >
+      
+      <div className="relative w-full pb-[56.25%] rounded-md overflow-hidden">
+        
+        <Image
+          src={urlFor(blog?.mainImage).url()}
+          alt={blog?.title}
+          fill
+          className="object-cover"
+        />
+      </div>
       <article>
         <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-700">
           {blog?.title}
@@ -16,7 +27,6 @@ const BlogItem = ({ blog }: { blog: Blog }) => {
         <p className="mb-3 font-normal text-sm text-gray-600">
           {new Date(blog?.publishedAt).toDateString()}
         </p>
-
         <p className="mb-3 font-normal text-gray-600">
           {blog?.metadata?.slice(0, 140)}...
         </p>
