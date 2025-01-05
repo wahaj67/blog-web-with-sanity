@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Create Blog Website ✨💖",
-  description: "Next.js + Sanity.io headless CMS Blog-web",
+  title: "Engineering Blogs Website ✨💖",
+  description: "Next.js + Sanity.io headless CMS Blog-web built with 💖by Wahaj Ali",
 };
 
 export default function RootLayout({
