@@ -41,7 +41,9 @@ const CommentList = ({ postSlug}: { postSlug: string }) => {
   if (comments.length === 0) {
     return <p>No comments yet. Be the first to comment!</p>;
   }
-
+  if(loading){
+    return <p>Loading...</p>;
+  }
 
   // Display comments
   return (
